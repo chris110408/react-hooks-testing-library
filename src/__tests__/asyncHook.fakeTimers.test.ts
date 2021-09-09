@@ -77,9 +77,9 @@ describe('async hook (fake timers) tests', () => {
 
     test('should waitFor arbitrary expectation to pass when fake timers are not advanced explicitly', async () => {
       const fn = jest.fn().mockReturnValueOnce(false).mockReturnValueOnce(true)
-    
+
       const { waitFor } = renderHook(() => null)
-    
+
       await waitFor(() => {
         expect(fn()).toBe(true)
       })
@@ -146,8 +146,7 @@ describe('async hook (fake timers) tests', () => {
       )
     })
 
-    // eslint-disable-next-line jest/no-disabled-tests
-    test.skip('should not reject when waiting for next update if timeout has been disabled', async () => {
+    test('should not reject when waiting for next update if timeout has been disabled', async () => {
       const { result, waitForNextUpdate } = renderHook(() => useSequence(['first', 'second'], 1100))
 
       expect(result.current).toBe('first')
